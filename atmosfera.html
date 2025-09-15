@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmosfera Terrestre - Infografica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a6fc4 0%, #0c3a6b 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #1a6fc4;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 15px 0;
+            color: #1a6fc4;
+        }
+        
+        .comparison {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .planet {
+            text-align: center;
+            width: 100px;
+        }
+        
+        .planet-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .composition {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .gas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .oxygen {
+            background-color: #4caf50;
+        }
+        
+        .nitrogen {
+            background-color: #2196f3;
+        }
+        
+        .co2 {
+            background-color: #ff9800;
+        }
+        
+        .other {
+            background-color: #9e9e9e;
+        }
+        
+        .earth-container {
+            position: relative;
+            height: 300px;
+            margin: 30px 0;
+        }
+        
+        .earth {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #4c90f2, #1a6fc4, #0c3a6b);
+            box-shadow: 0 0 25px rgba(26, 111, 196, 0.5);
+        }
+        
+        .atmosphere {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 1px dashed rgba(26, 111, 196, 0.3);
+            animation: pulse 4s infinite alternate;
+        }
+        
+        .atmosphere-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px dashed rgba(26, 111, 196, 0.2);
+        }
+        
+        .layer-1 { width: 280px; height: 280px; }
+        .layer-2 { width: 310px; height: 310px; }
+        
+        .meteor {
+            position: absolute;
+            width: 3px;
+            height: 15px;
+            background: linear-gradient(to bottom, #ff6b00, #ff0000);
+            border-radius: 50%;
+            animation: meteor-fall 5s infinite linear;
+        }
+        
+        .meteor:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .meteor:nth-child(2) {
+            top: 5%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+        
+        .meteor:nth-child(3) {
+            top: 15%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+        
+        .function {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .function-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: #1a6fc4;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        @keyframes meteor-fall {
+            0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(300px) rotate(45deg); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>L'ATMOSFERA TERRESTRE</h1>
+        <p class="subtitle">L'involucro gassoso che avvolge la Terra e permette la vita</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Cos'è l'Atmosfera</h2>
+            <div class="icon">🌍</div>
+            <p>L'atmosfera è una miscela di gas che avvolge la Terra, trattenuta dalla <strong>forza di gravità</strong>. Senza di essa, la vita sul nostro pianeta non sarebbe possibile.</p>
+            <p>La gravità terrestre è sei volte più forte di quella lunare, il che impedisce ai gas di disperdersi nello spazio.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Composizione dell'Aria</h2>
+            <div class="icon">🧪</div>
+            <p>L'aria secca al livello del mare è composta da:</p>
+            <div class="composition">
+                <div class="gas nitrogen">Azoto <span>78%</span></div>
+                <div class="gas oxygen">Ossigeno <span>21%</span></div>
+                <div class="gas other">Argon <span>0.93%</span></div>
+                <div class="gas co2">Anidride Carbonica <span>0.04%</span></div>
+                <div class="gas other">Altri gas <span>0.03%</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="earth-container">
+        <div class="earth"></div>
+        <div class="atmosphere"></div>
+        <div class="atmosphere-layer layer-1"></div>
+        <div class="atmosphere-layer layer-2"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+        <div class="meteor"></div>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Confronto con altri pianeti</h2>
+            <div class="icon">🪐</div>
+            <div class="comparison">
+                <div class="planet">
+                    <div class="planet-icon">☿️</div>
+                    <p>Mercurio</p>
+                    <small>Atmosfera quasi assente</small>
+                </div>
+                <div class="planet">
+                    <div class="planet-icon">♀️</div>
+                    <p>Venere</p>
+                    <small>CO₂ (96.5%)</small>
+                </div>
+                <div class="planet">
+                    <div class="planet-icon">🌍</div>
+                    <p>Terra</p>
+                    <small>Ossigeno (21%)</small>
+                </div>
+                <div class="planet">
+                    <div class="planet-icon">♂️</div>
+                    <p>Marte</p>
+                    <small>CO₂ (95%)</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Funzioni Principali</h2>
+            <div class="icon">🛡️</div>
+            
+            <div class="function">
+                <div class="function-icon">💨</div>
+                <div>
+                    <strong>Respirazione</strong>
+                    <p>Fornisce ossigeno a piante, animali e esseri umani</p>
+                </div>
+            </div>
+            
+            <div class="function">
+                <div class="function-icon">🛡️</div>
+                <div>
+                    <strong>Protezione</strong>
+                    <p>Brucia i meteoriti prima che raggiungano la superficie</p>
+                </div>
+            </div>
+            
+            <div class="function">
+                <div class="function-icon">🌡️</div>
+                <div>
+                    <strong>Regolazione termica</strong>
+                    <p>Effetto serra che mantiene temperature abitabili</p>
+                </div>
+            </div>
+            
+            <div class="function">
+                <div class="function-icon">💧</div>
+                <div>
+                    <strong>Ciclo dell'acqua</strong>
+                    <p>Trasporta il vapore acqueo per il ciclo idrologico</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Perché è importante proteggerla</h2>
+            <div class="icon">⚠️</div>
+            <p>L'atmosfera "utile alla vita" è solo un sottile strato rispetto alle dimensioni della Terra, simile alla buccia di una mela rispetto al frutto intero.</p>
+            <p>L'immissione di miliardi di tonnellate di sostanze inquinanti ogni anno mette a rischio questo equilibrio delicato, con conseguenze per il clima e la salute di tutti gli esseri viventi.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>L'atmosfera terrestre: un sistema complesso e delicato che permette la vita sul nostro pianeta</p>
+        <p>Proteggiamola per le generazioni future</p>
+    </footer>
+</body>
+</html>
