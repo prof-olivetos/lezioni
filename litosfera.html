@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Litosfera - Infografica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6b93d6, #4a6ba5);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #4a6ba5;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #4a6ba5;
+        }
+        
+        h3 {
+            color: #5a7cb6;
+            margin: 20px 0 10px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .earth-structure {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        .diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            background: linear-gradient(to bottom, 
+                #8bc34a 5%, 
+                #ffd54f 5%, #ffd54f 10%,
+                #ff9800 10%, #ff9800 15%,
+                #ff5722 15%, #ff5722 20%,
+                #9c27b0 20%, #9c27b0 100%);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .earth-inner {
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(to bottom, #3f51b5, #2196f3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .layers {
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .layer {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+        
+        .process-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4a6ba5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .comparison-item {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e9f1fb;
+        }
+        
+        .test-yourself {
+            background-color: #e9f1fb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        .btn-check {
+            background-color: #4a6ba5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #3a5a94;
+        }
+        
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>La Litosfera</h1>
+        <p>La "pelle" rocciosa della Terra</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Cos'è la Litosfera</h2>
+            <p>La litosfera è il rigido involucro roccioso che ricopre il globo terrestre. Nelle zone pianeggianti è spesso ricoperta da suolo, vegetazione o centri urbani, mentre nelle zone montuose è più evidente.</p>
+            
+            <h3>La Crosta Terrestre</h3>
+            <p>La parte più esterna e sottile della litosfera è la <strong>crosta terrestre</strong>, la superficie su cui viviamo. Si distingue in:</p>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h4>Crosta Continentale</h4>
+                    <p>Forma i continenti, più spessa (30-70 km) e meno densa. Composta principalmente da granito.</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>Crosta Oceanica</h4>
+                    <p>Forma i fondali oceanici, più sottile (5-10 km) e densa. Composta principalmente da basalto.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Il Ciclo Litogenetico</h2>
+            <p>Le rocce non sono immutabili ma subiscono, in milioni di anni, processi di trasformazione che ne modificano l'aspetto originario. Questo ciclo naturale è detto <strong>ciclo litogenetico</strong>.</p>
+            
+            <div class="process-box">
+                <div class="process-icon">①</div>
+                <h4>Formazione</h4>
+                <p>Le rocce si formano attraverso processi magmatici, sedimentari o metamorfici</p>
+            </div>
+            
+            <div class="process-box">
+                <div class="process-icon">②</div>
+                <h4>Trasformazione</h4>
+                <p>Le rocce vengono modificate da agenti atmosferici, erosione e processi tettonici</p>
+            </div>
+            
+            <div class="process-box">
+                <div class="process-icon">③</div>
+                <h4>Riformazione</h4>
+                <p>I materiali erosivi formano nuove rocce attraverso la sedimentazione e la ricristallizzazione</p>
+            </div>
+        </div>
+        
+        <div class="card earth-structure">
+            <h2>Struttura della Terra</h2>
+            <div class="diagram">
+                <div class="earth-inner">Nucleo</div>
+                <div class="layers">
+                    <div class="layer">
+                        <div class="color-box" style="background-color: #8bc34a;"></div>
+                        <div>Crosta (5-70 km)</div>
+                    </div>
+                    <div class="layer">
+                        <div class="color-box" style="background-color: #ffd54f;"></div>
+                        <div>Mantello superiore</div>
+                    </div>
+                    <div class="layer">
+                        <div class="color-box" style="background-color: #ff9800;"></div>
+                        <div>Mantello inferiore</div>
+                    </div>
+                    <div class="layer">
+                        <div class="color-box" style="background-color: #ff5722;"></div>
+                        <div>Nucleo esterno</div>
+                    </div>
+                    <div class="layer">
+                        <div class="color-box" style="background-color: #9c27b0;"></div>
+                        <div>Nucleo interno</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Agenti di Trasformazione</h2>
+            <p>La superficie terrestre è modellata da due tipi di forze:</p>
+            
+            <h3>Agenti Endogeni</h3>
+            <p>Traggono energia dal calore interno della Terra:</p>
+            <ul>
+                <li>Fenomeni orogenetici (formazione montagne)</li>
+                <li>Vulcani</li>
+                <li>Terremoti</li>
+                <li>Dorsali oceaniche</li>
+                <li>Faglie</li>
+            </ul>
+            
+            <h3>Agenti Esogeni</h3>
+            <p>Traggono energia dalla radiazione solare:</p>
+            <ul>
+                <li>Precipitazioni atmosferiche</li>
+                <li>Vento</li>
+                <li>Variazioni di temperatura</li>
+                <li>Acque correnti</li>
+                <li>Ghiacciai</li>
+                <li>Mare</li>
+                <li>Esseri viventi</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Il Modellamento</h2>
+            <p>L'azione combinata di erosione, trasporto e deposito di detriti rocciosi da parte degli agenti esogeni viene definita <strong>modellamento</strong>.</p>
+            
+            <p>Questo processo dà origine a:</p>
+            <ul>
+                <li>Gole e valli</li>
+                <li>Pianure</li>
+                <li>Formazioni rocciose caratteristiche</li>
+                <li>Suolo fertile</li>
+            </ul>
+            
+            <p>Il modellamento è essenziale per la formazione di suolo fertile, fondamentale per la nostra sopravvivenza sulla Terra.</p>
+        </div>
+    </div>
+    
+    <div class="test-yourself">
+        <h2>Mettiti alla prova</h2>
+        
+        <div class="question">
+            <p>La crosta terrestre si divide in crosta __________ e crosta __________.</p>
+            <input type="text" id="answer1" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(1, 'continentale', 'oceanica')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback1"></div>
+        </div>
+        
+        <div class="question">
+            <p>Vulcani e terremoti sono esempi di agenti __________.</p>
+            <input type="text" id="answer2" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(2, 'endogeni')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback2"></div>
+        </div>
+        
+        <div class="question">
+            <p>Pioggia, vento e variazioni di temperatura sono esempi di agenti __________.</p>
+            <input type="text" id="answer3" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(3, 'esogeni')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback3"></div>
+        </div>
+        
+        <div class="question">
+            <p>L'azione di erosione, trasporto e deposito di detriti rocciosi viene nel complesso definita __________.</p>
+            <input type="text" id="answer4" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(4, 'modellamento')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback4"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Infografica creata per illustrare la struttura e le caratteristiche della litosfera terrestre</p>
+    </footer>
+
+    <script>
+        function checkAnswer(questionNum, correctAnswer1, correctAnswer2 = null) {
+            const answerInput = document.getElementById(`answer${questionNum}`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            const userAnswer = answerInput.value.trim().toLowerCase();
+            
+            let isCorrect = false;
+            
+            if (correctAnswer2) {
+                // For two-part answers (like question 1)
+                const answers = userAnswer.split(/\s+e\s+|\s+ed\s+|\s*,\s*|\s+/) // Split by "e", "ed", comma or space
+                    .filter(a => a.length > 0);
+                
+                if (answers.length >= 2) {
+                    isCorrect = (answers.includes(correctAnswer1.toLowerCase()) && 
+                                answers.includes(correctAnswer2.toLowerCase()));
+                }
+            } else {
+                // For single answers
+                isCorrect = userAnswer === correctAnswer1.toLowerCase();
+            }
+            
+            if (isCorrect) {
+                feedback.textContent = "Corretto! ✅";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = correctAnswer2 ? 
+                    `Risposta corretta: ${correctAnswer1} e ${correctAnswer2}` : 
+                    `Risposta corretta: ${correctAnswer1}`;
+                feedback.style.color = "red";
+            }
+            
+            feedback.style.display = "block";
+        }
+    </script>
+</body>
+</html>
