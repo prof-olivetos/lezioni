@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reazioni di Ossidoriduzione - Infografica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .infographic-container {
+            background: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(120deg, #2c3e50 0%, #4a6491 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a6491;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 15px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .intro {
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e6f7ff;
+            border-radius: 10px;
+            border-left: 5px solid #4a6491;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-color: #4a6491;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .reaction {
+            font-family: 'Courier New', monospace;
+            background-color: #f1f8ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #4a6491;
+        }
+        
+        .definition-box {
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px dashed #4a6491;
+        }
+        
+        .definition-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .mnemonic {
+            background: linear-gradient(135deg, #4a6491 0%, #2c3e50 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 25px 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .hashtags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .hashtag {
+            background-color: #4a6491;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <header>
+            <h1>REAZIONI DI OSSIDORIDUZIONE (REDOX)</h1>
+            <p>Dove l'Energia si Scambia</p>
+        </header>
+        
+        <div class="intro">
+            Scopri le reazioni chimiche più comuni in cui gli atomi si scambiano elettroni, cambiando il mondo che ci circonda.
+        </div>
+        
+        <div class="definition-box">
+            <div class="definition-title">COS'È UNA REAZIONE REDOX?</div>
+            <p>Una reazione in cui avviene un <strong>trasferimento di elettroni</strong> da una specie chimica (che si <strong>ossida</strong>) a un'altra (che si <strong>riduce</strong>).</p>
+        </div>
+        
+        <div class="mnemonic">
+            "OIL RIG" - Oxidation Is Loss, Reduction Is Gain<br>
+            (Ossidazione è Perdita, Riduzione è Guadagno di elettroni)
+        </div>
+        
+        <h2>REAZIONI REDOX NELLA VITA QUOTIDIANA</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
+                    LA CORROSIONE DEI METALLI
+                </div>
+                <div class="card-content">
+                    <h3>Arrugginimento del Ferro</h3>
+                    <div class="reaction">4Fe + 3O₂ + 6H₂O → 4Fe(OH)₃</div>
+                    <p>Il Ferro (Fe) si <strong>ossida</strong> (perde elettroni). L'Ossigeno (O₂) dell'aria si <strong>riduce</strong> (guadagna elettroni).</p>
+                    <p><strong>Impatto:</strong> Causa danni enormi a strutture, automobili e infrastrutture.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(255,100,0,0.6), rgba(255,50,0,0.6))">
+                    LA COMBUSTIONE
+                </div>
+                <div class="card-content">
+                    <h3>Bruciare un Idrocarburo</h3>
+                    <div class="reaction">CH₄ + 2O₂ → CO₂ + 2H₂O + Energia</div>
+                    <p>Il Carbonio (C) nel metano si <strong>ossida</strong>. L'Ossigeno (O₂) si <strong>riduce</strong>.</p>
+                    <p><strong>Impatto:</strong> Fondamentale per la produzione di energia (motori, riscaldamento, centrali elettriche).</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(100,100,200,0.6), rgba(50,50,150,0.6))">
+                    PILE E BATTERIE
+                </div>
+                <div class="card-content">
+                    <h3>Pila Zinco-Carbone</h3>
+                    <div class="reaction">Zn → Zn²⁺ + 2e⁻ (Ossidazione)<br>2MnO₂ + 2NH₄⁺ + 2e⁻ → Mn₂O₃ + 2NH₃ + H₂O (Riduzione)</div>
+                    <p>Una reazione redox spontanea genera un flusso di elettroni (corrente elettrica).</p>
+                    <p><strong>Impatto:</strong> Alimentano dispositivi portatili come telecomandi, torce e giocattoli.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>REAZIONI REDOX NELL'INDUSTRIA</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(0,100,200,0.6), rgba(0,50,150,0.6))">
+                    ELETTROLISI
+                </div>
+                <div class="card-content">
+                    <h3>Estrazione dell'Alluminio</h3>
+                    <div class="reaction">2Al₂O₃ (fuso) → 4Al + 3O₂</div>
+                    <p>Si forza una reazione redox <strong>non spontanea</strong> usando energia elettrica. L'alluminio si <strong>riduce</strong> ad alluminio metallico (Al).</p>
+                    <p><strong>Impatto:</strong> Processo per produrre alluminio puro, utilizzato in lattine, aeroplani, imballaggi.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(255,150,0,0.7), rgba(255,80,0,0.7))">
+                    SALDATURA TERMITE
+                </div>
+                <div class="card-content">
+                    <h3>Riduzione dei Metalli</h3>
+                    <div class="reaction">Fe₂O₃ + 2Al → 2Fe + Al₂O₃ + Calore intenso</div>
+                    <p>L'alluminio (Al) si <strong>ossida</strong> e riduce l'ossido di ferro (Fe₂O₃) a ferro metallico (Fe) fuso.</p>
+                    <p><strong>Impatto:</strong> Usata per saldare rotaie ferroviarie in situ.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>REAZIONI REDOX NEL NOSTRO CORPO</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(50,150,50,0.6), rgba(20,100,20,0.6))">
+                    RESPIRAZIONE CELLULARE
+                </div>
+                <div class="card-content">
+                    <h3>Produzione di Energia</h3>
+                    <div class="reaction">C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energia (ATP)</div>
+                    <p>Il glucosio (C₆H₁₂O₆) si <strong>ossida</strong>. L'ossigeno (O₂) che respiriamo si <strong>riduce</strong>.</p>
+                    <p><strong>Impatto:</strong> Fornisce l'energia (ATP) necessaria per tutte le funzioni vitali delle cellule.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(rgba(200,50,50,0.6), rgba(150,20,20,0.6))">
+                    TEST DEL GLUCOSIO
+                </div>
+                <div class="card-content">
+                    <h3>Monitoraggio Glicemico</h3>
+                    <p>Il glucosio nel sangue si <strong>ossida</strong> da parte di un enzima specifico. Questo trasferimento di elettroni genera una debole corrente elettrica misurata dal glucometro.</p>
+                    <p><strong>Impatto:</strong> Permette ai diabetici di monitorare i livelli di zucchero nel sangue in modo rapido e preciso.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion">
+            <h2>CONCLUSIONE</h2>
+            <p>Le reazioni redox sono il <strong>motore invisibile</strong> del nostro mondo. Dall'energia del nostro corpo alla batteria dello smartphone, dalla ruggine sulla bicicletta all'ossigeno che respiriamo, tutto è governato dallo scambio di elettroni.</p>
+        </div>
+        
+        <footer>
+            <p>Infografica sulle Reazioni di Ossidoriduzione</p>
+            <div class="hashtags">
+                <span class="hashtag">#Chimica</span>
+                <span class="hashtag">#Redox</span>
+                <span class="hashtag">#Scienza</span>
+                <span class="hashtag">#Energia</span>
+                <span class="hashtag">#Infografica</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
