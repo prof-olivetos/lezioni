@@ -72,46 +72,39 @@
             text-align: center;
         }
         
-        .diagram {
+        .earth-image {
             width: 100%;
             max-width: 600px;
-            height: 300px;
             margin: 20px auto;
-            background: linear-gradient(to bottom, 
-                #8bc34a 5%, 
-                #ffd54f 5%, #ffd54f 10%,
-                #ff9800 10%, #ff9800 15%,
-                #ff5722 15%, #ff5722 20%,
-                #9c27b0 20%, #9c27b0 100%);
-            border-radius: 50%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        .earth-inner {
-            width: 80%;
-            height: 80%;
-            background: linear-gradient(to bottom, #3f51b5, #2196f3);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
+        .earth-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-style: italic;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
         }
         
         .layers {
-            position: absolute;
-            left: 10%;
-            top: 50%;
-            transform: translateY(-50%);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .layer {
-            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e9f1fb;
             display: flex;
             align-items: center;
         }
@@ -121,6 +114,7 @@
             height: 20px;
             margin-right: 10px;
             border-radius: 3px;
+            flex-shrink: 0;
         }
         
         .process-box {
@@ -260,29 +254,31 @@
         
         <div class="card earth-structure">
             <h2>Struttura della Terra</h2>
-            <div class="diagram">
-                <div class="earth-inner">Nucleo</div>
-                <div class="layers">
-                    <div class="layer">
-                        <div class="color-box" style="background-color: #8bc34a;"></div>
-                        <div>Crosta (5-70 km)</div>
-                    </div>
-                    <div class="layer">
-                        <div class="color-box" style="background-color: #ffd54f;"></div>
-                        <div>Mantello superiore</div>
-                    </div>
-                    <div class="layer">
-                        <div class="color-box" style="background-color: #ff9800;"></div>
-                        <div>Mantello inferiore</div>
-                    </div>
-                    <div class="layer">
-                        <div class="color-box" style="background-color: #ff5722;"></div>
-                        <div>Nucleo esterno</div>
-                    </div>
-                    <div class="layer">
-                        <div class="color-box" style="background-color: #9c27b0;"></div>
-                        <div>Nucleo interno</div>
-                    </div>
+            <div class="earth-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Earth-layers-italian.svg/1280px-Earth-layers-italian.svg.png" alt="Struttura a strati della Terra">
+                <div class="image-caption">Rappresentazione degli strati che compongono la Terra (fonte: Wikimedia Commons)</div>
+            </div>
+            
+            <div class="layers">
+                <div class="layer">
+                    <div class="color-box" style="background-color: #8bc34a;"></div>
+                    <div><strong>Crosta</strong> (5-70 km)</div>
+                </div>
+                <div class="layer">
+                    <div class="color-box" style="background-color: #ffd54f;"></div>
+                    <div><strong>Mantello superiore</strong></div>
+                </div>
+                <div class="layer">
+                    <div class="color-box" style="background-color: #ff9800;"></div>
+                    <div><strong>Mantello inferiore</strong></div>
+                </div>
+                <div class="layer">
+                    <div class="color-box" style="background-color: #ff5722;"></div>
+                    <div><strong>Nucleo esterno</strong></div>
+                </div>
+                <div class="layer">
+                    <div class="color-box" style="background-color: #9c27b0;"></div>
+                    <div><strong>Nucleo interno</strong></div>
                 </div>
             </div>
         </div>
