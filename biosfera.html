@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Biosfera - Infografica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2e7d32;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2e7d32;
+        }
+        
+        h3 {
+            color: #388e3c;
+            margin: 20px 0 10px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .biosphere-structure {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        .biosphere-image {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .biosphere-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-style: italic;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .layers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .layer {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+            display: flex;
+            align-items: center;
+        }
+        
+        .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        
+        .process-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .comparison-item {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e8f5e9;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #4caf50;
+        }
+        
+        .timeline-event {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #4caf50;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .test-yourself {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-check {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-check:hover {
+            background-color: #388e3c;
+        }
+        
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Stili per la visualizzazione della biosfera */
+        .biosphere-visual {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to bottom, 
+                #87ceeb 0%, #87ceeb 15%, 
+                #4caf50 15%, #4caf50 40%, 
+                #1e88e5 40%, #1e88e5 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .biosphere-label {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>La Biosfera</h1>
+        <p>Il luogo della vita sulla Terra</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Cos'è la Biosfera</h2>
+            <p>La biosfera è la parte del pianeta in cui esistono i viventi. Ha uno spessore di appena una ventina di chilometri e comprende:</p>
+            <ul>
+                <li>Tutte le acque salate e dolci</li>
+                <li>I fondali marini</li>
+                <li>Le terre emerse con le loro acque</li>
+                <li>I primi chilometri di atmosfera</li>
+            </ul>
+            
+            <p>La Terra è l'unico pianeta del Sistema Solare che ospita la vita come la conosciamo, grazie alla presenza di acqua liquida e ossigeno.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Ecosistemi della Biosfera</h2>
+            <p>La biosfera è suddivisa in una serie di ecosistemi. Ogni ecosistema è l'insieme dell'ambiente fisico (acqua, aria, suolo) e delle forme di vita presenti in un certo luogo.</p>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h4>Ecosistemi Terrestri</h4>
+                    <p>Foreste, deserti, praterie, tundre, montagne</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>Ecosistemi Acquatici</h4>
+                    <p>Oceani, mari, laghi, fiumi, zone umide</p>
+                </div>
+            </div>
+            
+            <p>La biosfera può essere definita come l'insieme di tutti gli ecosistemi esistenti sulla Terra.</p>
+        </div>
+        
+        <div class="card biosphere-structure">
+            <h2>Estensione della Biosfera</h2>
+            
+            <div class="biosphere-visual">
+                <div class="biosphere-label" style="top: 5%; left: 10%;">Atmosfera (fino a 10 km)</div>
+                <div class="biosphere-label" style="top: 30%; left: 50%;">Terre emerse</div>
+                <div class="biosphere-label" style="top: 70%; left: 30%;">Oceani e mari</div>
+                <div class="biosphere-label" style="bottom: 10%; left: 70%;">Fondali oceanici</div>
+            </div>
+            
+            <p>La biosfera si estende dagli strati più alti dell'atmosfera (dove volano alcuni uccelli e si trovano microrganismi) fino alle profondità oceaniche più estreme.</p>
+        </div>
+        
+        <div class="card">
+            <h2>Storia della Vita sulla Terra</h2>
+            <p>La vita è presente sulla Terra da circa 3,7 miliardi di anni e da quel momento ha fortemente condizionato l'evoluzione del pianeta.</p>
+            
+            <div class="timeline">
+                <div class="timeline-event">
+                    <div class="timeline-date">3,7 miliardi di anni fa</div>
+                    <p>Prime forme di vita (organismi anaerobi)</p>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">2,7 miliardi di anni fa</div>
+                    <p>Comparsa dei cianobatteri e inizio della fotosintesi</p>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">2,4 miliardi di anni fa</div>
+                    <p>Arricchimento dell'atmosfera con ossigeno</p>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">600 milioni di anni fa</div>
+                    <p>Comparsa degli organismi aerobi complessi</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Interazioni della Biosfera</h2>
+            <p>La biosfera interagisce con le altre sfere terrestri attraverso meccanismi complessi:</p>
+            
+            <div class="process-box">
+                <div class="process-icon">⇄</div>
+                <h4>Con l'Atmosfera</h4>
+                <p>Scambio di gas (ossigeno, anidride carbonica)</p>
+            </div>
+            
+            <div class="process-box">
+                <div class="process-icon">⇄</div>
+                <h4>Con l'Idrosfera</h4>
+                <p>Ciclo dell'acqua, regolazione del clima</p>
+            </div>
+            
+            <div class="process-box">
+                <div class="process-icon">⇄</div>
+                <h4>Con la Litosfera</h4>
+                <p>Formazione del suolo, ciclo dei nutrienti</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>L'Importanza della Fotosintesi</h2>
+            <p>La comparsa dei cianobatteri, organismi unicellulari in grado di effettuare la fotosintesi, ha cambiato per sempre il pianeta:</p>
+            
+            <ul>
+                <li>Produzione di ossigeno atmosferico</li>
+                <li>Creazione dello strato di ozono protettivo</li>
+                <li>Possibilità di vita per organismi aerobi</li>
+                <li>Base della catena alimentare</li>
+            </ul>
+            
+            <p>Questo processo ha permesso la conquista del pianeta da parte delle forme di vita complesse.</p>
+        </div>
+    </div>
+    
+    <div class="test-yourself">
+        <h2>Mettiti alla prova</h2>
+        
+        <div class="question">
+            <p>La __________ è la parte del pianeta in cui esistono i viventi.</p>
+            <input type="text" id="answer1" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(1, 'biosfera')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback1"></div>
+        </div>
+        
+        <div class="question">
+            <p>La vita è presente sulla Terra da circa __________ miliardi di anni.</p>
+            <input type="text" id="answer2" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(2, '3,7')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback2"></div>
+        </div>
+        
+        <div class="question">
+            <p>I __________ furono i primi organismi in grado di effettuare la fotosintesi.</p>
+            <input type="text" id="answer3" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(3, 'cianobatteri')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback3"></div>
+        </div>
+        
+        <div class="question">
+            <p>L'insieme di tutti gli ecosistemi terrestri forma la __________.</p>
+            <input type="text" id="answer4" placeholder="Scrivi la tua risposta...">
+            <button class="btn-check" onclick="checkAnswer(4, 'biosfera')">Controlla risposta</button>
+            <div class="answer-feedback" id="feedback4"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Infografica creata per illustrare la biosfera e le sue caratteristiche</p>
+    </footer>
+
+    <script>
+        function checkAnswer(questionNum, correctAnswer) {
+            const answerInput = document.getElementById(`answer${questionNum}`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            const userAnswer = answerInput.value.trim().toLowerCase();
+            
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Corretto! ✅";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Risposta corretta: ${correctAnswer}`;
+                feedback.style.color = "red";
+            }
+            
+            feedback.style.display = "block";
+        }
+    </script>
+</body>
+</html>
