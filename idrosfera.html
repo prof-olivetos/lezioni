@@ -80,12 +80,72 @@
         .water-cycle {
             text-align: center;
             margin: 30px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
-        .water-cycle img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+        .cycle-container {
+            position: relative;
+            height: 400px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        
+        .cycle-step {
+            position: absolute;
+            background: white;
+            border: 2px solid #1a6fc4;
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        
+        .cycle-arrow {
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: #1a6fc4;
+            z-index: 1;
+        }
+        
+        .cycle-arrow:after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -6px;
+            border-left: 10px solid #1a6fc4;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+        
+        .curved-arrow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 4px solid transparent;
+            border-top-color: #1a6fc4;
+            border-right-color: #1a6fc4;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .curved-arrow:after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            border-left: 10px solid #1a6fc4;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
         }
         
         .percentage {
@@ -121,6 +181,15 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
+        .importance ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .importance li {
+            margin-bottom: 10px;
+        }
+        
         footer {
             text-align: center;
             margin-top: 40px;
@@ -132,6 +201,16 @@
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .cycle-container {
+                height: 600px;
+            }
+            
+            .cycle-step {
+                width: 70px;
+                height: 70px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -194,7 +273,40 @@
     <section class="water-cycle">
         <h2>Il Ciclo dell'Acqua</h2>
         <p>L'acqua fluisce tra atmosfera, oceani e continenti in un ciclo continuo</p>
-        <img src="https://cdn.pixabay.com/photo/2021/06/13/14/58/water-cycle-6332390_1280.png" alt="Illustrazione del ciclo dell'acqua" style="max-width: 100%; height: auto;">
+        
+        <div class="cycle-container">
+            <!-- Evaporazione -->
+            <div class="cycle-step" style="top: 20px; left: 50%; transform: translateX(-50%);">Evaporazione<br>dagli oceani</div>
+            <div class="curved-arrow" style="top: 110px; left: 50%; width: 120px; height: 120px; transform: translateX(-50%) rotate(180deg);"></div>
+            
+            <!-- Condensazione -->
+            <div class="cycle-step" style="top: 150px; left: 30%;">Condensazione<br>nelle nuvole</div>
+            <div class="cycle-arrow" style="top: 185px; left: 40%; transform: rotate(150deg); width: 100px;"></div>
+            
+            <!-- Precipitazione -->
+            <div class="cycle-step" style="top: 250px; left: 20%;">Precipitazione<br>(pioggia, neve)</div>
+            <div class="cycle-arrow" style="top: 250px; left: 30%; transform: rotate(220deg); width: 80px;"></div>
+            
+            <!-- Infiltrazione -->
+            <div class="cycle-step" style="top: 320px; left: 30%;">Infiltrazione<br>nel terreno</div>
+            <div class="cycle-arrow" style="top: 320px; left: 40%; transform: rotate(150deg); width: 70px;"></div>
+            
+            <!-- Deflusso -->
+            <div class="cycle-step" style="top: 250px; left: 70%;">Deflusso<br>superficiale</div>
+            <div class="cycle-arrow" style="top: 250px; left: 60%; transform: rotate(320deg); width: 80px;"></div>
+            
+            <!-- Fiumi -->
+            <div class="cycle-step" style="top: 320px; left: 70%;">Ritorno ai fiumi<br>e agli oceani</div>
+            <div class="curved-arrow" style="top: 240px; left: 70%; width: 100px; height: 100px; transform: rotate(300deg);"></div>
+            
+            <!-- Evaporazione da terra -->
+            <div class="cycle-step" style="top: 150px; left: 70%;">Evaporazione<br>dalla terra</div>
+            <div class="cycle-arrow" style="top: 185px; left: 60%; transform: rotate(30deg); width: 100px;"></div>
+            
+            <!-- Traspirazione -->
+            <div class="cycle-step" style="top: 80px; left: 70%;">Traspirazione<br>delle piante</div>
+            <div class="cycle-arrow" style="top: 120px; left: 65%; transform: rotate(90deg); width: 50px;"></div>
+        </div>
     </section>
     
     <section class="importance">
